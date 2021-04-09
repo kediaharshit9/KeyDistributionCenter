@@ -41,3 +41,6 @@ out_enc.txt - file where the encrypted message is stored in base64 encoding. <br
 out.txt - file where message is stored after decryption. <br />
 127.0.0.1 - the IP of KDC server. <br />
 12345 - the port of KDC server.
+
+###### TYPESCRIPTS
+Experimented with 3 terminal windows, one corresponding to a example run given above. Terrminal typescripts are recorded with the above example instance. Attached inside the typescripts folder.

@@ -1,2 +1,0 @@
-:bob         :127.0.0.1       :10002   :NGVydVo5Y0VQUmd5:
-:al          :127.0.0.1       :10001   :eU15UjBweGhSV3lF:
