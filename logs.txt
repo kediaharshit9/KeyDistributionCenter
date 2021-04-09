@@ -1,0 +1,9 @@
+Connected to ('127.0.0.1', 10002)
+Registered bob         
+Closing connection...
+Connected to ('127.0.0.1', 10001)
+Registered alice       
+Closing connection...
+Connected to ('127.0.0.1', 10001)
+Sent alice        details of bob         
+Closing connection...
