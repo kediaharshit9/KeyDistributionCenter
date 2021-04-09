@@ -75,17 +75,19 @@ if __name__=='__main__':
             # print(parts)
             obj = Registrants(parts[2], parts[3], parts[4])
             users[parts[5]] = obj
-            
-            reply = "|302|" + parts[5] + "|"
-            conn.sendall(bytes(reply, 'utf-8'))
-            conn.close()
-            print("Closing connection...")
+                
             pwdfile = open(PWD,'w')
             for x in users.keys():
                 b64mk = base64.b64encode(bytes(users[x].mk, 'utf-8'))
                 data = ":" + x + ":"+ users[x].ip +":"+ users[x].port+":"+ b64mk.decode('utf-8') +":"
                 pwdfile.write(data + "\n")
             pwdfile.close()  
+
+            reply = "|302|" + parts[5] + "|"
+            conn.sendall(bytes(reply, 'utf-8'))
+            conn.close()
+            print("Registered ", parts[5])
+            print("Closing connection...")
 
         elif (opcode=='305'):
             parts = msg.split('|')
@@ -119,20 +121,22 @@ if __name__=='__main__':
             # generate a session key
             K_s = generateSessionKey(8)
 
-            if ID_B not in users.keys():
-                print("user not registered")
+            if ID_A not in users.keys():
+                print("Unregistered user queried")
+                s.sendall(bytes("|404| Register please", 'utf-8'))
+                conn.close()
+                continue
+            elif ID_B not in users.keys():
+                s.sendall(bytes("|404| User not found", 'utf-8'))
                 conn.close()
                 continue
 
             details_A = users[ID_A]
             details_B = users[ID_B]
 
-            # reply = 306 | E_A(msg2 || E_b(msg3))
-
-            # msg3 is 8 + 1 + 12 + 1 + 12 + 1 + 16 + 1 + 16+ 1 + 8 = 77 bytes 
+            # reply = |306 | E_A(msg2 || E_b(msg3))
             msg3 = K_s + "|" + ID_A + "|" + ID_B + "|" + nonce1 + "|" + details_A.ip + "|" + details_A.port
             # print(msg3)
-            # msg2 is 78 bytes
             msg2 = K_s + "|" + ID_A + "|" + ID_B + "|" + nonce1 + "|" + details_B.ip + "|" + details_B.port +"|"
             # print(msg2)
 
@@ -158,14 +162,13 @@ if __name__=='__main__':
                 msg2 = msg2 + (b'\x00'*pad)
             
             msg2 = msg2 + E_kb
-            # made 160 bytes
             E_ka = enc1.update(msg2) + enc1.finalize()            
             # print(E_ka)
-            # print(len(E_ka))
             E_ka64 = base64.b64encode(E_ka).decode("utf-8")
 
             reply = "|306|" + E_ka64
 
             conn.sendall(bytes(reply, 'utf-8'))
             conn.close()
+            print("Sent ", ID_A, " details of ", ID_B)
             print("Closing connection...")
