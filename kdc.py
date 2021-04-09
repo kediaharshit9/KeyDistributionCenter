@@ -52,18 +52,20 @@ if __name__=='__main__':
         print("invalid arguments, use: kdc -p port -o outfile -f pwdfile")
         exit(0)
     
-    
+    logfile = open(LOGS, 'w')
     users = {}
     #bind to socket
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
     s.bind(('', PORT))
 
     print("Listening on port ", PORT)
+    print("For details see - ", LOGS)
+    print("Press Ctrl+C to exit")
     s.listen(2)
 
     while True:
         conn, addr = s.accept()
-        print("Connected to ", addr)
+        logfile.write("Connected to "+ str(addr) +"\n")
         
         data = conn.recv(1024)
         msg = data.decode('utf-8')
@@ -86,8 +88,8 @@ if __name__=='__main__':
             reply = "|302|" + parts[5] + "|"
             conn.sendall(bytes(reply, 'utf-8'))
             conn.close()
-            print("Registered ", parts[5])
-            print("Closing connection...")
+            logfile.write("Registered " + parts[5] + '\n')
+            logfile.write("Closing connection...\n")
 
         elif (opcode=='305'):
             parts = msg.split('|')
@@ -122,11 +124,12 @@ if __name__=='__main__':
             K_s = generateSessionKey(8)
 
             if ID_A not in users.keys():
-                print("Unregistered user queried")
+                logfile.write("Unregistered user is asking for query\n")
                 s.sendall(bytes("|404| Register please", 'utf-8'))
                 conn.close()
                 continue
             elif ID_B not in users.keys():
+                logfile.write("Asing for Unregistered user\n")
                 s.sendall(bytes("|404| User not found", 'utf-8'))
                 conn.close()
                 continue
@@ -170,5 +173,8 @@ if __name__=='__main__':
 
             conn.sendall(bytes(reply, 'utf-8'))
             conn.close()
-            print("Sent ", ID_A, " details of ", ID_B)
-            print("Closing connection...")
+            logfile.write("Sent " + ID_A +" details of "+ ID_B+ '\n')
+            logfile.write("Closing connection...\n")
+    
+    s.close()
+    logfile.close()
