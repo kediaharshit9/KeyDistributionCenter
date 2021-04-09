@@ -181,7 +181,7 @@ def receiver(args):
             NAME = args[i+1].ljust(12)
             counter += 1
         elif args[i]=='-o':
-            OUTFILE = args[i+1].ljust(12)
+            OUTFILE = args[i+1]
             counter += 1
         elif args[i]=='-s':
             OUTENC = args[i+1]
