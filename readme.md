@@ -8,7 +8,7 @@ This acts as the center on which users register with their ID and Address. Each 
 Any registered user (say A) can query this KDC server to get the address and a session key of another registered user (say B) and some enrypted data which proves authenticity of user A to user B. Also a session key is generated to share data from A to B. <br />
 The arguments are as provided in the assignment statement. Example run:
 ```console
-$ python3 kdc.py -p 12345 -o out.txt -f pwd.txt
+$ python3 kdc.py -p 12345 -o logs.txt -f pwd.txt
 ```
 Here: <br />
 12345 - is the port on which the server listens to. <br />
@@ -43,4 +43,5 @@ out.txt - file where message is stored after decryption. <br />
 12345 - the port of KDC server.
 
 ###### TYPESCRIPTS
-Experimented with 3 terminal windows, one corresponding to a example run given above. Terrminal typescripts are recorded with the above example instance. Attached inside the typescripts folder.
+Experimented with 3 terminal windows, one corresponding to a example run given above. Terrminal typescripts are recorded with the above example instance. Attached inside the typescripts folder.<br />
+First start the server program. Then start the client programs.
