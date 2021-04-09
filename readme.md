@@ -44,4 +44,8 @@ out.txt - file where message is stored after decryption. <br />
 
 ###### TYPESCRIPTS
 Experimented with 3 terminal windows, one corresponding to a example run given above. Terrminal typescripts are recorded with the above example instance. Attached inside the typescripts folder.<br />
-First start the server program. Then start the client programs.
+First start the server program. Then start the client programs. Used 
+```console
+$ col -bp < bin_file > file.txt
+```
+to convert the binary files into readable text format.
