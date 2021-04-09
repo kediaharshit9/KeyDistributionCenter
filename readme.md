@@ -4,8 +4,8 @@ The objective of this assignment is to implement the KDC-based key establishment
 
 We have implemented 3 roles here:
 ##### 1. KDC-server
-This acts as the center on which users register with their ID and Address. Each user also has aa unique master key shared with the server, which is used to generate a shared key between a specific user and the server. 
-Any registered user (say A) can query this KDC server to get the address and a session key of another registered user (say B) and some enrypted data which proves authenticity of user A to user B. Also a session key is generated to share data from A to B.
+This acts as the center on which users register with their ID and Address. Each user also has aa unique master key shared with the server, which is used to generate a shared key between a specific user and the server. <br />
+Any registered user (say A) can query this KDC server to get the address and a session key of another registered user (say B) and some enrypted data which proves authenticity of user A to user B. Also a session key is generated to share data from A to B. <br />
 Example run:
 ```console
 $ python3 kdc.py -p 12345 -o out.txt -f pwd.txt
