@@ -1,0 +1,19 @@
+Script started on 2021-04-09 13:56:01+0530
+0.1k-ph12345/cs6500/A301;32mhk3@hk300m:01;34m~/cs6500/A300m$ python3 client.py -n alice -m S -o bob -i inp.txt -a 127.0.0
+Using port  10001
+Registering to KDC -  alice
+Registration successful !!!
+Sleeping ...
+Querying KDC for session with -  bob
+Successfully received address and session key from KDC ...
+Sending  session key to -  bob
+Sending encrypted file to  bob
+FINISHED
+ Exiting ...
+0;hk3@hk3: ~/cs6500/A301;32mhk3@hk300m:01;34m~/cs6500/A300m$ cat inp.txt
+This is the test message. Hey, BOB!
+
+0;hk3@hk3: ~/cs6500/A301;32mhk3@hk300m:01;34m~/cs6500/A300m$ exit
+exit
+
+Script done on 2021-04-09 13:57:13+0530

@@ -1,0 +1,19 @@
+Script started on 2021-04-09 13:55:52+0530
+]0;hk3@hk3: ~/cs6500/A3[01;32mhk3@hk3[00m:[01;34m~/cs6500/A3[00m$ python3 client.py -n bob -m R -s out_enc.txt -o out.txt -a 1127.0.0.1 -p 12345
+Using port  10002
+Registering with KDC -  bob         
+Registration successful !!!
+Connection request from  ('127.0.0.1', 10001)
+Received Session key from -  alice       
+Connected to  ('127.0.0.1', 10001)
+Writing encrypted message in base64 format to - out_enc.txt
+Writing decoded message to - out.txt
+Exiting ...
+]0;hk3@hk3: ~/cs6500/A3[01;32mhk3@hk3[00m:[01;34m~/cs6500/A3[00m$ cat out.txt
+This is the test message. Hey, BOB!
+
+]0;hk3@hk3: ~/cs6500/A3[01;32mhk3@hk3[00m:[01;34m~/cs6500/A3[00m$ cat out-[K_enc.txt
+ARl/qIRgzThtcoXFYy+TYQP+Uiq5Z0/fDQHGwqsVvoMZrcurinyHs89Td5U+xk8a]0;hk3@hk3: ~/cs6500/A3[01;32mhk3@hk3[00m:[01;34m~/cs6500/A3[00m$ exit
+exit
+
+Script done on 2021-04-09 13:57:09+0530

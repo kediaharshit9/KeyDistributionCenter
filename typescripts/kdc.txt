@@ -1,0 +1,15 @@
+Script started on 2021-04-09 13:55:31+0530
+0;hk3@hk3: ~/cs6500/A301;32mhk3@hk300m:01;34m~/cs6500/A300m$ python3 kdc.py -p 12345 -o logs.txt -f pwd.txt
+Listening on port  12345
+For details see -  logs.txt
+Press Ctrl+C to exit
+^CTraceback (most recent call last):
+  File "kdc.py", line 67, in <module>
+    conn, addr = s.accept()
+  File "/home/hk3/anaconda3/lib/python3.7/socket.py", line 212, in accept
+    fd, addr = self._accept()
+KeyboardInterrupt
+0;hk3@hk3: ~/cs6500/A301;32mhk3@hk300m:01;34m~/cs6500/A300m$ exit
+exit
+
+Script done on 2021-04-09 13:57:17+0530
