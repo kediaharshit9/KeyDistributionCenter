@@ -1,5 +1,0 @@
-python3 kdc.py -p 12345 -o out.txt -f pwd.txt
-
-python3 client.py -n alice -m S -o bob -i inp.txt -a 127.0.0.1 -p 12345
-
-python3 client.py -n bob -m R -s out_enc.txt -o out.txt -a 127.0.0.1 -p 12345
